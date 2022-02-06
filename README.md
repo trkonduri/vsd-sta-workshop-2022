@@ -9,6 +9,7 @@ VSD STA WORKSHOP 2022
 - Asynchronous pin timing checks
 - Data to data checks (mainly applicable to DDR interface)
 - Clock gating checks
+- Clock skew
 - Latch timing
 - Multiple clocks
 - Timing arc's
@@ -18,6 +19,18 @@ VSD STA WORKSHOP 2022
 - Clock network
 - GBA (Graph based analysis) and PBA (Path based analysis) 
 - Liberty file
+- Crosstalk and noise
+- Operating modes
+- Variations
+  - On chip variation
+  - Intra die variation
+  - Inter wafer variation
+- Clock groups
+  - synchronous clocks
+  - Asynchronous clocks
+   - physically exclusive
+   - logically exclusive  
+ 
 
 
 Slack :
@@ -38,6 +51,21 @@ Hold Check:
 - Data launched by setup check must not be captured by previous capture edge.
 - Data launched by next launch edge must not be captured by current capture edge
 
+Clock gating check:
+- When a signal can control path of a clock at a cell
+- The signal must be used as a clock in downstream
+  - Feed a clk pin of register
+  - Feed an output port
+  - Feed a generated clock
+- Intention of this check is that transition on gating pin does not create unnecessary active edge of the clock in the fanout
+Async checks
+- De-assertion needs to meet recovery(setup) and removal(hold) check requirements to have circuit properly work
+- assetion can happen any time
+Skew:
+- Positive skew
+- Negative skew
+- Useful skew
+
 Questions:
 - Does .lib characterization assumes only one input switching or multiple inputs switching for multi-input cells like NAND/NOR cells?
 - Follow up question, how to model multi-input switching if the .lib char assumes single input switching?
@@ -51,5 +79,9 @@ Lab exercises:
 - Pins for cell NAND2
 - Understand how report timing gets all the values for each timing point?
 - Interpolation of .lib values (understanding)
-- 
+- report timing and understand the path
+- report_timing
+- report_rat
+- report_at
+- clock gating checks/async path checks are not reported in the OT
 
