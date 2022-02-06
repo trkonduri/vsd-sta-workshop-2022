@@ -141,6 +141,19 @@ timing report with all timing points marked. Critical timing path is from primar
 | dump_graph    | accessor | [-o file]          | dump the timing graph to a DOT format           | dump_graph                  |
 | dump_timer    | accessor | [-o file]          | dump the design statistics                      | dump_timer                  |
 
+One of the biggest advantage with open timer is to dump the graph and it can be visulaized using graphviz software [](https://dreampuf.github.io/GraphvizOnline/#digraph%20TimingGraph%20%7B%0A%20%20%22u4%3AA%22%3B%0A%20%20%22u4%3AY%22%3B%0A%20%20%22u3%3AA%22%3B%0A%20%20%22inp2%22%3B%0A%20%20%22tau2015_clk%22%3B%0A%20%20%22u1%3AY%22%3B%0A%20%20%22out%22%3B%0A%20%20%22u1%3AB%22%3B%0A%20%20%22u1%3AA%22%3B%0A%20%20%22u2%3AY%22%3B%0A%20%20%22u4%3AB%22%3B%0A%20%20%22inp1%22%3B%0A%20%20%22u3%3AY%22%3B%0A%20%20%22f1%3AQ%22%3B%0A%20%20%22f1%3AD%22%3B%0A%20%20%22f1%3ACLK%22%3B%0A%20%20%22u2%3AA%22%3B%0A%20%20%22u1%3AY%22%20-%3E%20%22u4%3AA%22%3B%0A%20%20%22f1%3AQ%22%20-%3E%20%22u4%3AB%22%3B%0A%20%20%22u4%3AY%22%20-%3E%20%22f1%3AD%22%3B%0A%20%20%22u4%3AB%22%20-%3E%20%22u4%3AY%22%3B%0A%20%20%22u4%3AA%22%20-%3E%20%22u4%3AY%22%3B%0A%20%20%22u4%3AB%22%20-%3E%20%22u4%3AY%22%3B%0A%20%20%22u4%3AA%22%20-%3E%20%22u4%3AY%22%3B%0A%20%20%22u2%3AY%22%20-%3E%20%22u3%3AA%22%3B%0A%20%20%22u3%3AY%22%20-%3E%20%22out%22%3B%0A%20%20%22u3%3AA%22%20-%3E%20%22u3%3AY%22%3B%0A%20%20%22u3%3AA%22%20-%3E%20%22u3%3AY%22%3B%0A%20%20%22f1%3AQ%22%20-%3E%20%22u2%3AA%22%3B%0A%20%20%22u2%3AA%22%20-%3E%20%22u2%3AY%22%3B%0A%20%20%22u2%3AA%22%20-%3E%20%22u2%3AY%22%3B%0A%20%20%22tau2015_clk%22%20-%3E%20%22f1%3ACLK%22%3B%0A%20%20%22f1%3ACLK%22%20-%3E%20%22f1%3AD%22%3B%0A%20%20%22f1%3ACLK%22%20-%3E%20%22f1%3AQ%22%3B%0A%20%20%22f1%3ACLK%22%20-%3E%20%22f1%3AD%22%3B%0A%20%20%22f1%3ACLK%22%20-%3E%20%22f1%3AQ%22%3B%0A%20%20%22inp1%22%20-%3E%20%22u1%3AA%22%3B%0A%20%20%22inp2%22%20-%3E%20%22u1%3AB%22%3B%0A%20%20%22u1%3AB%22%20-%3E%20%22u1%3AY%22%3B%0A%20%20%22u1%3AA%22%20-%3E%20%22u1%3AY%22%3B%0A%20%20%22u1%3AB%22%20-%3E%20%22u1%3AY%22%3B%0A%20%20%22u1%3AA%22%20-%3E%20%22u1%3AY%22%3B%0A%7D%0A)
+![image](https://user-images.githubusercontent.com/16179505/152671892-6e9b3bce-f20d-4836-97fc-acc6122290bf.png)
+
+
+# Lab2
+To find the arrival time
+```
+report_at -pin u1:a
+```
+![image](https://user-images.githubusercontent.com/16179505/152671995-4b132722-4d4d-42d4-a0d2-b488d2566595.png)
+
+
+
 Here are the full set of commands :
 
 | Command | Form | Description |
