@@ -170,6 +170,82 @@ ot> report_slack -pin F2:D -pin U7:A2 -rise -late
 
 ![image](https://user-images.githubusercontent.com/16179505/152672332-0a950a92-4290-4d40-be23-e7f8f7aabe0f.png)
 
+# lab4
+- Without cppr credit 
+```
+disable_cppr
+```
+
+![image](https://user-images.githubusercontent.com/16179505/152672441-2ebeb112-bbc2-49ff-be20-b88d912a7718.png)
+- With cppr credit applied
+```
+cppr -enable
+#also can be used
+enable_cppr
+```
+![image](https://user-images.githubusercontent.com/16179505/152672497-0c2ea382-6554-4b21-954e-fb0fc89caa58.png)
+
+
+ECO is being implemented :
+```
+read_celllib -early s27_Early.lib
+read_celllib -late s27_Late.lib
+read_verilog s27.v
+read_sdc s27.sdc
+## Try run with cppr -disable
+cppr -enable
+report_timing
+report_at -pin U9:Z -rise -late
+report_at -pin U9:Z -rise -early
+ranganayakulu@sta-workshop:~/Desktop/sta_workshop/lab4$ cd ../lab5/
+ranganayakulu@sta-workshop:~/Desktop/sta_workshop/lab5$ cat run.tcl 
+read_celllib -early s27_Early.lib
+read_celllib -late s27_Late.lib
+read_verilog s27.v
+read_sdc s27.sdc
+## Try run with cppr -disable
+cppr -enable
+report_timing
+report_at -pin U9:Z -rise -late
+report_at -pin U9:Z -rise -early
+## Inserting Timing ECOs
+insert_gate U16 CLKBUF_X3
+insert_net c6
+disconnect_pin U15:Z
+connect_pin U15:Z c6
+connect_pin U16:A c6
+connect_pin U16:Z c5
+report_timing
+
+```
+
+
+![image](https://user-images.githubusercontent.com/16179505/152672689-99a46714-755a-4418-8346-75644377a693.png)
+
+
+Timing before ECO: -353ps
+![image](https://user-images.githubusercontent.com/16179505/152672853-1596bfcc-a707-4d7c-a2c4-2c74baaeb237.png)
+
+Timing after ECO : -317ps
+![image](https://user-images.githubusercontent.com/16179505/152672836-a9f9c809-faad-4e3f-8aee-b6ccc3664fa6.png)
+
+Clock gating check reporting is not available in OpenTimer : 
+
+![image](https://user-images.githubusercontent.com/16179505/152673223-80b64119-5897-43aa-96ef-e2adc3f8a58c.png)
+
+#lab7 
+Async checks are not available in OT, it needs to be manually computed : 141-0 
+```
+ot> ##Slack= (Required AT at R1:RN) - (Actual AT at R1:CK)
+ot> report_at -pin R1:RN -late -rise
+141
+ot> report_at -pin R1:CK -early -rise
+0
+```
+![image](https://user-images.githubusercontent.com/16179505/152673402-d7d669ca-4ad9-4a03-988b-6f4366d08404.png)
+
+
+
 Here are the full set of commands :
 
 | Command | Form | Description |
