@@ -96,6 +96,15 @@ To run a script in openTimer using batch mode
 ot-shell -i <run.tcl> -o <out.log>
 ```
 
+
+
+To start with ot-shell :
+```
+unix>ot-shell
+```
+
+![image](https://user-images.githubusercontent.com/16179505/152670504-e9e58b6a-3cf8-461c-a63c-44a95384c70e.png)
+
 ```
 ## reading liberty model
 read_celllib osu018_stdcells.lib
@@ -110,3 +119,64 @@ dump_taskflow
 report_timing -num_paths 5
 dump_graph
 ```
+![image](https://user-images.githubusercontent.com/16179505/152670585-b5e829fb-90d8-4d73-9281-5c95657ffac3.png)
+
+report timing shows the worst path, you can increase max paths to be dumped using -num_paths option
+![image](https://user-images.githubusercontent.com/16179505/152670635-27bf81c1-0203-41ef-bb07-327f8a12f9cd.png)
+
+timing report with all timing points marked. Critical timing path is from primary input port (inp1) to endpoint f1/D
+![image](https://user-images.githubusercontent.com/16179505/152670746-7b99f0ac-02cd-463e-860b-a7bef4571726.png)
+
+
+| Command       | type     | Arguments          | Description                                     | Example                     |
+|---------------|----------|--------------------|-------------------------------------------------|-----------------------------|
+| read_celllib  | builder  | [-min | -max] file | read the cell library for early and late splits | read_celllib mylib.lib      |
+| read_verilog  | builder  | file               | read the verilog netlist                        | read_verilog mynetlist.v    |
+| read_spef     | builder  | file               | read parasitics in SPEF                         | read_spef myparasitics.spef |
+| read_sdc      | builder  | file               | read a Synopsys Design Constraint file          | read_sdc myrule.sdc         |
+| update_timing | action   | none               | update the timing                               | update_timing               |
+| report_timing | action   | [-num_paths k]     | report the critical paths                       | report_timing -num_paths 10 |
+| report_tns    | action   | none               | report the total negative slack                 | report_tns                  |
+| report_wns    | action   | none               | report the worst negative slack                 | report_wns                  |
+| dump_graph    | accessor | [-o file]          | dump the timing graph to a DOT format           | dump_graph                  |
+| dump_timer    | accessor | [-o file]          | dump the design statistics                      | dump_timer                  |
+
+Here are the full set of commands :
+
+| Command | Form | Description |
+| :------ | :--- | :---------- |
+| [read_celllib](#read_celllib) | builder | reads a liberty format library file |
+| [read_verilog](#read_verilog) | builder | reads a gate-level verilog netlist  |
+| [read_spef](#read_spef)       | builder | reads a file of net parasitics in SPEF |
+| [read_sdc](#read_sdc)         | builder | reads a Synopsys Design Constraint (sdc) file of version 2.1 |
+| [read_timing](#read_timing)   | builder | reads a TAU15 Contest assertion file of timing constraints |
+| [set_units](#set_units)       | builder | specifies the units used to compute timing values and report results |
+| [set_at](#set_at)             | builder | specifies the arrival time of an input port |
+| [set_rat](#set_rat)           | builder | specifies the required arrival time of an output port |
+| [set_slew](#set_slew)         | builder | specifies the transition time of an input port |
+| [set_load](#set_load)         | builder | specifies the load capacitance of an output port |
+| [insert_gate](#insert_gate)   | builder | inserts a gate (instance) to the design |
+| [remove_gate](#remove_gate)   | builder | removes a gate (instance) from the design |
+| [repower_gate](#repower_gate) | builder | repowers a gate (instance) with a new cell |
+| [insert_net](#insert_net)     | builder | inserts an empty net to the design |
+| [remove_net](#remove_net)     | builder | removes a net from the design |
+| [connect_pin](#connect_pin)   | builder | connects a pin to a net |
+| [disconnect_pin](#disconnect_pin) | builder | disconnects a pin from a net |
+| [enable_cppr](#enable_cppr)   | builder | enables common path pessimism removal analysis |
+| [disable_cppr](#disable_cppr) | builder | disables common path pessimism removal analysis |
+| [update_timing](#update_timing) | action | updates the timer to keep all timing values up-to-date |
+| [report_timing](#report_timing) | action | reports the critical paths in the design |
+| [report_at](#report_at)         | action | reports the arrival time at a pin |
+| [report_slew](#report_slew)     | action | reports the transition time at a pin |
+| [report_rat](#report_rat)       | action | reports the required arrival time at a pin |
+| [report_slack](#report_slack)   | action | reports the slack at a pin |
+| [report_tns](#report_tns)       | action | reports the total negative slack of the design |
+| [report_wns](#report_wns)       | action | reports the worst negative slack of the design |
+| [report_fep](#report_fep)       | action | reports the total failing endpoints in the design |
+| [report_area](#report_area)     | action | reports the aggregate cell areas of the design |
+| [report_leakage_power](#report_leakage_power) | action | reports the aggregate cell leakage power of the design |
+| [license](#license)       | accessor | shows the license information |
+| [version](#version)       | accessor | shows the version of the OpenTimer |
+| [dump_timer](#dump_timer) | accessor | dumps the design statistics  |
+| [dump_taskflow](#dump_taskflow)| accessor | dumps the current lineage graph to a DOT format file |
+| [dump_graph](#dump_graph) | accessor | dumps the current timing graph to a DOT format file |
