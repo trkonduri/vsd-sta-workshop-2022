@@ -152,7 +152,23 @@ report_at -pin u1:a
 ```
 ![image](https://user-images.githubusercontent.com/16179505/152671995-4b132722-4d4d-42d4-a0d2-b488d2566595.png)
 
+# Lab3
+```
+report_slack -pin F2:D -late -rise
+```
+![image](https://user-images.githubusercontent.com/16179505/152672201-55cfad36-673c-4417-bab8-08be4fcdf350.png)
 
+![image](https://user-images.githubusercontent.com/16179505/152672261-68f22d20-7d13-46f7-880a-f41e87b0c723.png)
+
+```
+ot> report_slack -pin F2:D -pin U7:ZN -rise -late
+-212
+ot> report_slack -pin F2:D -pin U7:A2 -fall -late
+-212
+ot> report_slack -pin F2:D -pin U7:A2 -rise -late
+```
+
+![image](https://user-images.githubusercontent.com/16179505/152672332-0a950a92-4290-4d40-be23-e7f8f7aabe0f.png)
 
 Here are the full set of commands :
 
