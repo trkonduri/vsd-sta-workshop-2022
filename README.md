@@ -12,7 +12,7 @@ VSD STA WORKSHOP 2022
 - Latch timing
 - Multiple clocks
 - Timing arc's
--- Unateness
+  - Unateness
 - Timing sense
 - Cell delay computation
 - Clock network
