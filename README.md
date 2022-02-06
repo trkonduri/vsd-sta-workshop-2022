@@ -67,6 +67,11 @@ Skew:
 - Negative skew
 - Useful skew
 
+
+
+
+
+
 Questions:
 - Does .lib characterization assumes only one input switching or multiple inputs switching for multi-input cells like NAND/NOR cells?
 - Follow up question, how to model multi-input switching if the .lib char assumes single input switching?
@@ -86,3 +91,22 @@ Lab exercises:
 - report_at
 - clock gating checks/async path checks are not reported in the OT
 
+To run a script in openTimer using batch mode
+```
+ot-shell -i <run.tcl> -o <out.log>
+```
+
+```
+## reading liberty model
+read_celllib osu018_stdcells.lib
+## reading netlist model
+read_verilog simple.v
+## Parsing constraints
+read_sdc simple.sdc
+## Removing common path pessimism if there
+cppr -enable
+dump_taskflow
+## report timing reports for 5 paths
+report_timing -num_paths 5
+dump_graph
+```
