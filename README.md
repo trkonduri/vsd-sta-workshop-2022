@@ -222,18 +222,19 @@ report_timing
 
 ![image](https://user-images.githubusercontent.com/16179505/152672689-99a46714-755a-4418-8346-75644377a693.png)
 
-
-Timing before ECO: -353ps
+# lab5
+Timing before ECO: -353ps\
 ![image](https://user-images.githubusercontent.com/16179505/152672853-1596bfcc-a707-4d7c-a2c4-2c74baaeb237.png)
 
-Timing after ECO : -317ps
+Timing after ECO : -317ps\
 ![image](https://user-images.githubusercontent.com/16179505/152672836-a9f9c809-faad-4e3f-8aee-b6ccc3664fa6.png)
 
+# lab6
 Clock gating check reporting is not available in OpenTimer : 
 
 ![image](https://user-images.githubusercontent.com/16179505/152673223-80b64119-5897-43aa-96ef-e2adc3f8a58c.png)
 
-#lab7 
+# lab7 
 Async checks are not available in OT, it needs to be manually computed : 141-0 
 ```
 ot> ##Slack= (Required AT at R1:RN) - (Actual AT at R1:CK)
