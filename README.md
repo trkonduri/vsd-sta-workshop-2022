@@ -29,7 +29,8 @@ VSD STA WORKSHOP 2022
   - synchronous clocks
   - Asynchronous clocks
    - physically exclusive
-   - logically exclusive  
+   - logically exclusive 
+- Timing exceptions
  
 
 
